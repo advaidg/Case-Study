@@ -1,6 +1,7 @@
 package com.cognizant.truyum.dao;
 
-import java.text.ParseException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.cognizant.truyum.model.MenuItem;
@@ -9,7 +10,7 @@ import com.cognizant.truyum.util.DateUtil;
 public class MenuItemDaoCollectionImplTest {
 	static MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("TESTING MENU ITEM LIST");
 		testGetMenuItemListAdmin();
 		testGetMenuListCustomer();
@@ -17,8 +18,8 @@ public class MenuItemDaoCollectionImplTest {
 		testGetMenuItem();
 	}
 
-	public static void testGetMenuItemListAdmin() {
-		
+	public static void testGetMenuItemListAdmin() throws ClassNotFoundException, IOException, SQLException {
+
 		menuItemDao = new MenuItemDaoCollectionImpl();
 
 		List<MenuItem> menuItems = menuItemDao.getMenuItemListAdmin();
@@ -27,7 +28,7 @@ public class MenuItemDaoCollectionImplTest {
 		}
 	}
 
-	public static void testGetMenuListCustomer() {
+	public static void testGetMenuListCustomer() throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("TESTING MENU ITEM LIST CUSTOMER ");
 		List<MenuItem> menuItemList = menuItemDao.getMenuItemListCustomer();
 		System.out.println(menuItemDao.toString());
@@ -36,7 +37,7 @@ public class MenuItemDaoCollectionImplTest {
 		}
 	}
 
-	public static void testModifyMenuItem() {
+	public static void testModifyMenuItem() throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("TESTING MODFY ITEM");
 		MenuItem check = new MenuItem(1, "Berger", 1000.00f, true, new DateUtil().convertToDate("17/03/2018"),
 				"Main Course", true);
@@ -44,11 +45,10 @@ public class MenuItemDaoCollectionImplTest {
 		MenuItemDao.modifyMenuItem(check);
 		MenuItemDao.getMenuItem(1);
 		testGetMenuItemListAdmin();
-		
 
 	}
 
-	public static void testGetMenuItem() {
+	public static void testGetMenuItem() throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("TESTING GET MENU ITEMS");
 		MenuItem newMenuItem = new MenuItem(1, "Sandwich", 109.00f, true, new DateUtil().convertToDate("02/07/2017"),
 				"MainCourse", true);
