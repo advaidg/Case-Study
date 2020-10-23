@@ -5,10 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-	public static Date convertToDate(String date) throws ParseException
-	{
+	public  Date convertToDate(String date) 
+	{Date dateObj = new Date();
+		try {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		  Date dateObj = formatter.parse(date);  
+		  
+		
+			dateObj = formatter.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
 		  return dateObj;
 	}
 	

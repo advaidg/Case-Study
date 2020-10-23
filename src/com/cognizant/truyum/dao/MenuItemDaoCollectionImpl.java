@@ -12,25 +12,25 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao
 {
 
 		private static List<MenuItem> menuItemList;
-		public MenuItemDaoCollectionImpl() throws ParseException
+		public MenuItemDaoCollectionImpl() 
 		{
 			if (menuItemList == null) {
 				 {
 					menuItemList = new ArrayList<MenuItem>();
 					menuItemList.add(new MenuItem(1, "sandwich", 99.00f, true,
-							DateUtil.convertToDate("15/03/2017"), "Main Course",
+							new DateUtil().convertToDate("15/03/2017"), "Main Course",
 							true));
 					menuItemList.add(new MenuItem(2, "Burger", 129.00f, true,
-							DateUtil.convertToDate("23/12/2017"), "Main Course",
+							new DateUtil().convertToDate("23/12/2017"), "Main Course",
 							false));
 					menuItemList.add(new MenuItem(3, "Pizza", 149.00f, true,
-							DateUtil.convertToDate("21/08/2018"), "Main Course",
+							new DateUtil().convertToDate("21/08/2018"), "Main Course",
 							false));
 					menuItemList.add(new MenuItem(4, "French Fries", 57.00f,
-							false, DateUtil.convertToDate("02/07/2017"),
+							false, new DateUtil().convertToDate("02/07/2017"),
 							"Starters", true));
 					menuItemList.add(new MenuItem(000005, "Chocolate Brownie",
-							32.00f, true, DateUtil.convertToDate("02/11/2022"),
+							32.00f, true, new DateUtil().convertToDate("02/11/2022"),
 							"Dessert", true));
 				} 
 			}
@@ -53,7 +53,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao
 				}
 			}
 			
-			return null;
+			return customermenu;
 			
 		}
 		public void modifyMenuItem(MenuItem menuItem)

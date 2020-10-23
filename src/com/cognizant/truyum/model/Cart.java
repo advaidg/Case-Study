@@ -9,7 +9,7 @@ public class Cart {
 	private double total;
 	
 
-	public Cart(List<MenuItem> menuItemList, double total) {
+	public Cart(List<MenuItem> menuItemList) {
 		super();
 		this.menuItemList = menuItemList;
 		this.total = total;
