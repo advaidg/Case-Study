@@ -13,7 +13,7 @@ public class ConnectionHandler {
 	public static Connection getConnection() throws IOException, ClassNotFoundException, SQLException
 {
 	
-	FileInputStream fis= new FileInputStream("C:\\Users\\Advaid Gireesan\\Documents\\truYum");
+	FileInputStream fis= new FileInputStream("Connection.properties");
 	Properties prop =new Properties();
 	prop.load(fis);
 	Class.forName(prop.getProperty("driver"));

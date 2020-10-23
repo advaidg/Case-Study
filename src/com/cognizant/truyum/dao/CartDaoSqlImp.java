@@ -19,11 +19,13 @@ class CartDaoSqlImp implements CartDao {
 	public void addCartItem(long userId, long menuItemId) throws ClassNotFoundException, IOException, SQLException {
 		Connection con = ConnectionHandler.getConnection();
 		PreparedStatement ps = null;
-		String query="INSERT INTO cart (ct_id,ct_user_id,ct_menu_id) VALUE (?,?,?);";
-		ps.setLong(1, 1);
-		ps.setLong(2, userId);
-		ps.setLong(3,menuItemId);
-		ps.executeQuery();
+		String query="INSERT INTO cart (ct_user_id,ct_menu_id) VALUE (?,?);";
+		ps=con.prepareStatement(query);
+		
+		ps.setLong(1, userId);
+		ps.setLong(2,menuItemId);
+		if(ps.executeUpdate()>0)
+			{System.out.println("Added Successfully");}
 	}
 
 	@Override
@@ -33,6 +35,7 @@ class CartDaoSqlImp implements CartDao {
 		List<MenuItem> menuItem= new ArrayList<>();
 		Cart cart= new 	Cart(menuItem);
 		String query="SELECT * FROM menu_item m JOIN cart c on m.me_id=c.ct_menu_id WHERE c.ct_user_id=?;";
+		ps=con.prepareStatement(query);
 		ps.setLong(1,userId);
 		ResultSet rs= ps.executeQuery();
 		while(rs.next())
@@ -49,6 +52,7 @@ class CartDaoSqlImp implements CartDao {
 		}
 		String query1="SELECT sum(m.me_price) FROM menu_item m JOIN cart c on m.me_id=c.ct_menu_id WHERE c.ct_user_id=?;";
 		PreparedStatement ps1 = null;
+		ps1=con.prepareStatement(query1);
 		ps1.setLong(1,userId);
 		ResultSet rs1=ps1.executeQuery();
 		while(rs1.next())
@@ -66,9 +70,10 @@ class CartDaoSqlImp implements CartDao {
 		Connection con = ConnectionHandler.getConnection();
 		PreparedStatement ps = null;
 		String query = "DELETE FROM cart WHERE ct_user_id=? AND ct_menu_id=?;";
+		ps=con.prepareStatement(query);
 		ps.setFloat(1, userId);
 		ps.setFloat(2, menuItemId);
-		ps.executeQuery();
+		ps.execute();
 		
 	}
 
