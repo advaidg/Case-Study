@@ -26,14 +26,7 @@ public class CartDaoCollectionImpl implements CartDao {
 	public CartDaoCollectionImpl() throws ParseException {
 		if (userCarts == null) {
 			userCarts = new HashMap<Long, Cart>();
-//			MenuItem menuItem = new MenuItem(4, "Sandwich", 80.00f, true,
-//					new DateUtil().convertToDate("22/10/2020"), "Main Course", false);
-//			List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-//			menuItemList.add(menuItem);
-//			
-//			Cart cart = new Cart(menuItemList,80.0);
-//			Long user = (long) 1;
-//			userCarts.put(user, cart);
+
 		}
 	}
 
