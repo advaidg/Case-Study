@@ -12,15 +12,15 @@ public class MenuItemDaoSqlImplTest {
 private static MenuItemDaoSqlImpl menuItemDao = new MenuItemDaoSqlImpl();
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException, ParseException {
-		System.out.println("MenuItemDaoImplTest Main method begins");
-		System.out.println("Admin List of MenuItems");
+		System.out.println("TESTIN MENU_ITEMS SQL IMPLEMENTATION");
+		System.out.println("TESTING GET MENU LIST ADMIN");
 		testGetMenuItemListAdmin();
-		System.out.println("Customer List of Menu Items");
+		System.out.println("TESTING GET MENU LIST CUSTOMER ");
 		testGetMenuItemListCustomer();
-		System.out.println("Modifying and printing MenuItem");
+		System.out.println("TESTING MODIFY MENUITEM(5)");
 		testModifyMenuItem();
 		testGetMenuItemListAdmin();
-		System.out.println("Get Menu Item");
+		System.out.println("TEST GET MENU ITEM (MENU ITEM ID 2)");
 		testGetMenuItem();
 	}
 	
@@ -35,7 +35,7 @@ private static MenuItemDaoSqlImpl menuItemDao = new MenuItemDaoSqlImpl();
 	}
 
 	public static void testModifyMenuItem() throws ClassNotFoundException, IOException, SQLException, ParseException {
-		MenuItem menuItem = new MenuItem(5, "Chocolate", 30.0f, true, new DateUtil().convertToDate("15/03/2019"), "Desert", true);
+		MenuItem menuItem = new MenuItem(5, "Dark Chocolate ", 40.0f, true, new DateUtil().convertToDate("15/03/2019"), "Desert", true);
 		menuItemDao.modifyMenuItem(menuItem);
 	}
 	

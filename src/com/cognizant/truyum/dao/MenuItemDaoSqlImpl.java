@@ -72,7 +72,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		Date myDate = formatter.parse(date);
 		
 		java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
-		System.out.println(sqlDate);
+	//	System.out.println(sqlDate);
 
 		
 		

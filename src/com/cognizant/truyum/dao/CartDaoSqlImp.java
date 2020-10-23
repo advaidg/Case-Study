@@ -19,11 +19,10 @@ class CartDaoSqlImp implements CartDao {
 	public void addCartItem(long userId, long menuItemId) throws ClassNotFoundException, IOException, SQLException {
 		Connection con = ConnectionHandler.getConnection();
 		PreparedStatement ps = null;
-		String query="INSERT INTO cart (ct_user_id,ct_menu_id) VALUE (?,?);";
+		String query="INSERT INTO cart (ct_menu_id,ct_user_id) VALUE (?,?);";
 		ps=con.prepareStatement(query);
-		
-		ps.setLong(1, userId);
-		ps.setLong(2,menuItemId);
+		ps.setLong(1, menuItemId);
+		ps.setLong(2,userId);
 		if(ps.executeUpdate()>0)
 			{System.out.println("Added Successfully");}
 	}
@@ -44,7 +43,7 @@ class CartDaoSqlImp implements CartDao {
 			String name = rs.getNString(2);
 			float price = rs.getFloat(3);
 			boolean active = rs.getBoolean(4);
-			Date dateOfLaunch = new DateUtil().convertToDate(rs.getNString(5));
+			Date dateOfLaunch = rs.getDate(5);
 			String category = rs.getNString(6);
 			boolean freeDelivery = rs.getBoolean(7);
 			MenuItem m= new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
