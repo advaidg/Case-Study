@@ -29,7 +29,7 @@ public class CartDaoCollectionImpl implements CartDao {
 
 		}
 	}
-
+	@Override
 	public void addCartItem(long userId, long menuItemId) throws ClassNotFoundException, IOException, SQLException {
 		MenuItemDao MenuItemDao = new MenuItemDaoCollectionImpl();
 		MenuItem menuItem = MenuItemDao.getMenuItem(menuItemId);
@@ -48,7 +48,7 @@ public class CartDaoCollectionImpl implements CartDao {
 
 		}
 	}
-
+	@Override
 	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
 		double total = 0;
 		Cart c = userCarts.get(userId);
@@ -64,7 +64,7 @@ public class CartDaoCollectionImpl implements CartDao {
 		return allItems;
 
 	}
-
+	@Override
 	public void removeCartItem(long userId, long menuItemId) throws CartEmptyException {
 		Cart c = userCarts.get(userId);
 		List<MenuItem> allItems = c.getMenuItemList();

@@ -22,14 +22,13 @@ public class CartDaoCollectionImplTest {
 		menuItemList.forEach(System.out::println);
 
 	}
-
 	public static void testGetAllCartItems() throws ParseException, CartEmptyException, ClassNotFoundException, IOException, SQLException {
 		CartDao cartDao = new CartDaoCollectionImpl();
 		List<MenuItem> menuItem = cartDao.getAllCartItems(1);
 		menuItem.forEach(System.out::println);
 
 	}
-
+	
 	public static void testRemoveCartItem() throws ParseException, CartEmptyException, ClassNotFoundException, IOException, SQLException {
 		CartDao cartDao = new CartDaoCollectionImpl();
 		cartDao.removeCartItem(1, 4);
