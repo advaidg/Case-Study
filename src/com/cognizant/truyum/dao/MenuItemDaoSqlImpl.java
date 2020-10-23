@@ -100,7 +100,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			m = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 			
 			break;
-
+//
 		}
 
 		return m;
