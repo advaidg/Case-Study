@@ -63,14 +63,15 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 	@Override
 	public void modifyMenuItem(MenuItem menuItem) throws ClassNotFoundException, IOException, SQLException {
 		// TODO Auto-generated method stub
-		SimpleDateFormat formatter =new SimpleDateFormat("yyyy=MM-dd");
+	
 		Connection con = ConnectionHandler.getConnection();
 		String query = "UPDATE TABLE menu_item SET me_name='?'me, me_price=?, me_active=?, me_dol='?', me_cat='?',me_freedel=? WEHRE me_id=?)";
 		PreparedStatement ps = null;
 		ps.setString(1, menuItem.getName());
 		ps.setFloat(2, menuItem.getPrice());
 		ps.setBoolean(3, menuItem.isActive());
-		ps.setString(4, formatter.format(menuItem.getDateOfLaunch()));
+		Date d = menuItem.getDateOfLaunch();
+		ps.setDate(4,(java.sql.Date) d);
 		ps.setString(5, menuItem.getCategory());
 		ps.setBoolean(6, menuItem.isFreeDelivery());
 		ps.setLong(7, menuItem.getId());
@@ -89,7 +90,9 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 		ps.setLong(1, menuItemId);
 		ps = con.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
+	
 		while (rs.next()) {
+			
 			long id = rs.getLong(1);
 			String name = rs.getNString(2);
 			float price = rs.getFloat(3);
@@ -99,8 +102,8 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 			boolean freeDelivery = rs.getBoolean(7);
 			m = new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 			
-			break;
-//
+			
+
 		}
 
 		return m;
