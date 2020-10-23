@@ -25,6 +25,7 @@ class CartDaoSqlImp implements CartDao {
 		ps.setLong(2,userId);
 		if(ps.executeUpdate()>0)
 			{System.out.println("Added Successfully");}
+		ps.clearParameters();
 	}
 
 	@Override
@@ -48,16 +49,19 @@ class CartDaoSqlImp implements CartDao {
 			boolean freeDelivery = rs.getBoolean(7);
 			MenuItem m= new MenuItem(id, name, price, active, dateOfLaunch, category, freeDelivery);
 			menuItem.add(m);
+			ps.clearParameters();
 		}
 		String query1="SELECT sum(m.me_price) FROM menu_item m JOIN cart c on m.me_id=c.ct_menu_id WHERE c.ct_user_id=?;";
 		PreparedStatement ps1 = null;
 		ps1=con.prepareStatement(query1);
 		ps1.setLong(1,userId);
 		ResultSet rs1=ps1.executeQuery();
+		
 		while(rs1.next())
 		{
 			double price=rs1.getFloat(1);
 			cart.setTotal(price);
+			ps1.clearParameters();
 		}
 		
 		
@@ -73,6 +77,7 @@ class CartDaoSqlImp implements CartDao {
 		ps.setFloat(1, userId);
 		ps.setFloat(2, menuItemId);
 		ps.execute();
+		ps.clearParameters();
 		
 	}
 

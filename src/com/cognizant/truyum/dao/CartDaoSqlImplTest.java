@@ -11,13 +11,14 @@ public class CartDaoSqlImplTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException, CartEmptyException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside CartDaoSqlImplTest's Main");
-		System.out.println("AddCartItem invoked");
+		System.out.println("TESTING CART SQL IMPLEMENTATION ");
+		System.out.println("TESTING ADD ITEM TO CART(1,1) && (1,2)");
 		testAddCartItem();
-		System.out.println("getAllCartItem invoked");
+		System.out.println("TESTING GETALLCARTITEM(USER_ID =2)");
 		testGetAllCartItem();
-		System.out.println("removeCartItem invoked");
+		System.out.println("TESTING REMOVE CART ITEM (USER_ID=1,MENU_ITEM=1 ");
 		testRemoveCartItem();
+		System.out.println("VERIFYING WHETHER ITEM REMOVED OR NOT BY INVOKING GETALLCARTITEM(USER_ID =2)  ");
 		testGetAllCartItem();
 		System.out.println("Completed..");
 		
@@ -27,9 +28,7 @@ public class CartDaoSqlImplTest {
 		CartDaoSqlImp cartDaoImpl = new CartDaoSqlImp();
 		cartDaoImpl.addCartItem(1, 1);
 		cartDaoImpl.addCartItem(1, 2);
-		cartDaoImpl.addCartItem(2, 2);
-		cartDaoImpl.addCartItem(2, 3);
-		cartDaoImpl.addCartItem(2, 4);
+		
 	}
 	
 	public static void testGetAllCartItem() throws ClassNotFoundException, IOException, SQLException {
