@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
-import com.cognizant.truyum.util.DateUtil;
 
 class CartDaoSqlImp implements CartDao {
 
